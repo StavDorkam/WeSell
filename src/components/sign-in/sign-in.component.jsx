@@ -1,7 +1,7 @@
 import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { signInWithGoogle, auth } from '../../firebase/firebase.utils';
 import './sign-in.styles.scss';
 
 class SignIn extends React.Component {
@@ -13,9 +13,15 @@ class SignIn extends React.Component {
         }
     }
 
-    handleSubmit = ev => {
+    handleSubmit = async ev => {
         ev.preventDefault();
-        this.setState({ email: '', password: '' })
+        const {email, password} = this.state;
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: '' })
+        } catch(err) {
+            console.error('Couldn\'t log in:', err)
+        }
     }
 
     handleChange = ev => {
@@ -35,6 +41,7 @@ class SignIn extends React.Component {
                         type="email"
                         value={this.state.email}
                         label="Email"
+                        autoComplete="username"
                         required />
                     <FormInput
                         onChange={this.handleChange}
@@ -42,6 +49,7 @@ class SignIn extends React.Component {
                         type="password"
                         value={this.state.password}
                         label="Password"
+                        autoComplete="current-password"
                         required />
                     <div className="button-container">
                         <CustomButton type="submit">Sign In</CustomButton>
