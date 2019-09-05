@@ -1,8 +1,8 @@
 import React from 'react';
-import HomePage from './pages/home/homepage.component';
-import ShopPage from './pages/shop/shop.component';
-import SignInAndUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import NotFoundPage from './pages/notfound/notfoundpage.component';
+import HomePage from './pages/home/home-page.component';
+import ShopPage from './pages/shop/shop-page.component';
+import SignInAndUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up-page.component';
+import NotFoundPage from './pages/notfound/notfound-page.component';
 import Header from './components/header/header.component';
 import {Switch, Route} from 'react-router-dom';
 import {auth, createUserProfileDoc} from './firebase/firebase.utils';
