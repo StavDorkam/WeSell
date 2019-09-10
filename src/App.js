@@ -13,7 +13,7 @@ import Header from './components/header/header.component';
 
 import {auth, createUserProfileDoc} from './firebase/firebase.utils';
 import {setCurrentUser} from './redux/user/user.actions';
-import {selectCurrUser} from './redux/user/user.selector';
+import {selectCurrUser} from './redux/user/user.selectors';
 
 import './App.css';
 
@@ -23,6 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const {setCurrentUser} = this.props;
+    
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDoc(userAuth);
@@ -59,7 +60,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currUser: selectCurrUser
+  currUser: selectCurrUser,
 })
 
 const mapDispatchToProps = dispatch => ({
