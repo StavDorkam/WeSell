@@ -1,16 +1,16 @@
 import shopActionTypes from './shop.types';
 import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
 
-const _fetchCollectionsStart = () => ({
+const fetchCollectionsStart = () => ({
     type: shopActionTypes.FETCH_COLLECTIONS_START,
 });
 
-const _fetchCollectionsSuccess = collectionsMap => ({
+const fetchCollectionsSuccess = collectionsMap => ({
     type: shopActionTypes.FETCH_COLLECTIONS_SUCCESS,
     payload: collectionsMap
 })
 
-const _fetchCollectionsFailure = err => ({
+const fetchCollectionsFailure = err => ({
     type: shopActionTypes.FETCH_COLLECTIONS_FAILURE,
     payload: err
 })
@@ -18,17 +18,20 @@ const _fetchCollectionsFailure = err => ({
 const fetchCollectionsStartAsync = () => {
     return async dispatch => {
         const collectionRef = firestore.collection('collections');
-        dispatch(_fetchCollectionsStart())
+        dispatch(fetchCollectionsStart())
         try {
             const snapshot = await collectionRef.get();
             const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-            dispatch(_fetchCollectionsSuccess(collectionsMap))
+            dispatch(fetchCollectionsSuccess(collectionsMap))
         } catch (err) {
-            dispatch(_fetchCollectionsFailure(err))
+            dispatch(fetchCollectionsFailure(err))
         }
     }
 }
 
 export {
-    fetchCollectionsStartAsync
+    fetchCollectionsStartAsync,
+    fetchCollectionsSuccess,
+    fetchCollectionsStart,
+    fetchCollectionsFailure
 }
