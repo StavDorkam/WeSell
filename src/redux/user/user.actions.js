@@ -32,13 +32,14 @@ const signInFailure = error => ({
     payload: error
 })
 
-const signUpStart = () => ({
-    type: userActionTypes.SIGN_UP_START
+const signUpStart = credentials => ({
+    type: userActionTypes.SIGN_UP_START,
+    payload: credentials
 })
 
-const signUpSuccess = user => ({
+const signUpSuccess = ({user, moreData}) => ({
     type: userActionTypes.SIGN_UP_SUCCESS,
-    payload: user
+    payload: {user, moreData}
 })
 
 const signUpFailure = err => ({
