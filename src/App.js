@@ -12,10 +12,16 @@ import NotFoundPage from './pages/notfound/notfound-page.component';
 import Header from './components/header/header.component';
 
 import {selectCurrUser} from './redux/user/user.selectors';
+import {checkUserSession} from './redux/user/user.actions';
 
 import './App.css';
 
 class App extends React.Component {
+  componentDidMount() {
+    const {checkUserSession} = this.props;
+    checkUserSession();
+  }
+
   render() {
     return (
       <div className="App">
@@ -36,4 +42,8 @@ const mapStateToProps = createStructuredSelector({
   currUser: selectCurrUser,
 })
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
