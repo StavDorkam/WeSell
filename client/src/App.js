@@ -14,7 +14,7 @@ import Header from './components/header/header.component';
 import {selectCurrUser} from './redux/user/user.selectors';
 import {checkUserSession} from './redux/user/user.actions';
 
-import './App.css';
+import './global.styles.scss';
 
 const App = ({currUser, checkUserSession}) => {
     useEffect(() => {

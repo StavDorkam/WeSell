@@ -23,8 +23,8 @@ const Header = ({currUser, isHidden, signOutStart}) => (
             <Link to="/shop" className="option">CONTACT</Link>
             {
                 currUser ?
-                <div className="option" onClick={signOutStart}>SIGN-OUT</div> :
-                <Link className="option" to="/signin">SIGN-IN/SIGN-UP</Link>
+                <div className="option" onClick={signOutStart}>SIGN OUT</div> :
+                <Link className="option" to="/signin">SIGN IN</Link>
             }
         <CartIcon />
         </nav>
