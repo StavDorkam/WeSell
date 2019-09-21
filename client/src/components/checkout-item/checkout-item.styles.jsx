@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const CheckoutItemContainer = styled.section`
   width: 100%;
   display: flex;
@@ -9,23 +8,29 @@ const CheckoutItemContainer = styled.section`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    font-size: 18px;
+  }
 `;
 
 const TextContainer = styled.span`
   width: 23%;
+  @media screen and (max-width: 800px) {
+    width: 22%;
+  }
 `;
 
 const QuantityContainer = styled(TextContainer)`
-    display: flex;
-  
-    div {
-      cursor: pointer;
-    }
-  
-    span {
-      margin: 0px 10px;
-    }
-`
+  display: flex;
+
+  div {
+    cursor: pointer;
+  }
+
+  span {
+    margin: 0px 10px;
+  }
+`;
 
 const ImageContainer = styled.div`
   width: 23%;

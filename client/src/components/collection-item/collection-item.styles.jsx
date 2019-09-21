@@ -26,7 +26,7 @@ const CollectionItemContainer = styled.section`
         opacity: unset;
       }
 
-      custom-button {
+      button {
         opacity: unset;
         display: flex;
       }
