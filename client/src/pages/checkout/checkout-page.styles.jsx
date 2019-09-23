@@ -8,8 +8,9 @@ const CheckoutPageContainer = styled.section`
   align-items: center;
   margin: 50px auto 0;
 
-  @media screen and(max-width: 800px) {
-    width: 80%;
+  @media (max-width: 800px) {
+    width: 80vw;
+    margin: 20px auto;
   }
 
   & button {
